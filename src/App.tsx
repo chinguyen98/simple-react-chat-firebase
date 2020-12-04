@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Chatroom from './components/Chatroom';
+import SignIn from './components/SignIn';
+import { FirebaseContext } from './contexts/firebase.context';
 
 function App() {
+  const { user } = useContext(FirebaseContext);
   return (
     <div className="App">
-      <h1>Hello React</h1>
+      <header></header>
+      <section>
+        {
+          user ? <Chatroom /> : <SignIn />
+        }
+      </section>
     </div>
   );
 }

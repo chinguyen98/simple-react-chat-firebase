@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { FirebaseProvider } from './contexts/firebase.context';
 
+import './assets/scss/index.scss';
+
 ReactDOM.render(
   <FirebaseProvider>
     <React.Fragment>

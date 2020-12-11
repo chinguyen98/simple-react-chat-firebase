@@ -14,13 +14,14 @@ function Chatroom() {
 
   const sendMessage = async (e: FormEvent) => {
     e.preventDefault();
-    const { uid, photoURL } = auth.currentUser || {};
+    const { uid, photoURL, displayName } = auth.currentUser || {};
 
     await messageRef.add({
       uid,
       text: inputValue,
       photoURL: photoURL,
       created_at: serverTimeStamp,
+      name: displayName,
     } as IMessage)
 
     setInputValue('');
@@ -30,12 +31,13 @@ function Chatroom() {
     <>
       <div>
         {
-          messages && (messages as IMessage[]).map(({ uid, text, created_at, photoURL }) => (
+          messages && (messages as IMessage[]).map(({ uid, text, created_at, photoURL, name }) => (
             <ChatMessage
               key={uid}
               id={uid}
               text={text}
               photoURL={photoURL}
+              name={name}
             />
           ))
         }

@@ -3,4 +3,5 @@ export interface IMessage {
   text: string;
   created_at: object,
   photoURL: string,
+  name: string,
 }

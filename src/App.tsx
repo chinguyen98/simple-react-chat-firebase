@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import Chatroom from './components/Chatroom';
-import SignIn from './components/SignIn';
 import { FirebaseContext } from './contexts/firebase.context';
+import SignIn from './components/SignIn';
+import WaitingRoom from './pages/WaitingRoom';
 
 function App() {
   const { user } = useContext(FirebaseContext);
@@ -10,7 +10,7 @@ function App() {
       <header></header>
       <section>
         {
-          user ? <Chatroom /> : <SignIn />
+          user ? <WaitingRoom /> : <SignIn />
         }
       </section>
     </div>

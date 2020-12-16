@@ -1,7 +1,6 @@
 export default interface IRoom {
-  uid: string;
+  id: string;
   displayName: string;
   isLocked: boolean;
-  hostestId: string;
-  numberOfOnliner: number;
+  ownerId: string;
 }

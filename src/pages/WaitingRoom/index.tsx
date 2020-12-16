@@ -6,6 +6,8 @@ import CreateRoomForm from './components/CreateRoomForm';
 import ICreateRoomForm from './create-room-form.interface';
 
 import './waiting-room.scss';
+import ListRoom from './components/ListRoom';
+import IRoom from '../../dtos/room.dto';
 
 const WaitingRoom: FC = () => {
   const { firestore } = useContext(FirebaseContext);
@@ -16,14 +18,13 @@ const WaitingRoom: FC = () => {
 
   const [isAddRoomModalOpen, setIsAddRoomModalOpen] = useState<boolean>(false);
 
-  const handleCreateRoom = ({displayName, confirmPassword, password}: ICreateRoomForm) => {
-    console.log({displayName, confirmPassword, password})
+  const handleCreateRoom = ({ displayName, confirmPassword, password }: ICreateRoomForm) => {
+    console.log({ displayName, confirmPassword, password })
   }
 
   return (
     <div className="waiting-room">
       <Row className="d-flex flex-column justify-content-center align-items-center">
-        <h1>Hế lu. Chọn lấy 1 phòng và bắt đầu chat!</h1>
         <Button
           onClick={() => { setIsAddRoomModalOpen(true) }}
           className="btn-success"
@@ -31,6 +32,9 @@ const WaitingRoom: FC = () => {
         >
           Tạo phòng mới
         </Button>
+        <ListRoom
+          rooms={rooms as IRoom[]}
+        />
       </Row>
       <CreateRoomForm
         onCreate={handleCreateRoom}
